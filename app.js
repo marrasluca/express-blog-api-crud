@@ -9,7 +9,8 @@ app.get('/', (req, res) => {
     res.send('Ciao a tutti!');
 })
 
-// app.use('api/posts', postRouter); //router
+app.use('/api/posts', postRouter); //router
+
 
 
 //avvio del server
