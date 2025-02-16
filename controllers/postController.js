@@ -31,7 +31,7 @@ function store(req, res) {
     const newPost = {
         id : newId,
         title : req.body.title,
-        content : req.body.image,
+        content : req.body.content,
         tags : req.body.tags
 
     }
@@ -42,7 +42,29 @@ function store(req, res) {
 }
 
 function update(req, res) {
-    
+
+    const id = parseInt(req.params.id);
+    const post = posts.find(post => post.id === id);
+
+    if(!post){
+        res.status(404)
+
+        return res.json(
+            {
+                status: 404,
+                error: "Not found",
+                message: 'Post not found'
+            }
+        );
+    }
+    post.title = req.body.title;
+    post.content = req.body.content;
+    post.image = req.body.image;
+    post.tags = req.body.tags;
+
+        console.log(posts);
+
+    res.json(post);  
 }
 
 function patch(req, res) {
