@@ -23,7 +23,21 @@ function show(req, res) {
 }
 
 function store(req, res) {
-    
+     // Calcola il nuovo ID per il post
+    const newId = posts[posts.length - 1].id +1 
+
+
+     // Crea il nuovo post con i dati ricevuti dalla richiesta
+    const newPost = {
+        id : newId,
+        title : req.body.title,
+        content : req.body.image,
+        tags : req.body.tags
+
+    }
+     posts.push(newPost); // Aggiungi il nuovo post all'array dei post
+     console.log(posts);
+     res.status(201).json(newPost);
     
 }
 

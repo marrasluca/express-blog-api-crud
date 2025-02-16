@@ -5,6 +5,8 @@ const postRouter = require('./routers/postsRouter'); //Importa un router per ges
 
 app.use(express.static('public')); //cartella statica
 
+app.use(express.json());
+
 app.get('/', (req, res) => {
     res.send('Ciao a tutti!');
 })
