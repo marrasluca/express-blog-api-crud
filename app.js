@@ -2,7 +2,11 @@ const express = require('express');
 const app = express();
 const port = 3001;
 const postRouter = require('./routers/postsRouter'); //Importa un router per gestire le operazioni relative ai post
+
+//middlewares
 const notFound = require('./middlewares/notFound');
+const errorsHandler = require('./middlewares/errorsHandler');
+
 
 
 app.use(express.static('public')); //cartella statica
@@ -15,6 +19,8 @@ app.get('/', (req, res) => {
 
 app.use('/api/posts', postRouter); //router
 
+
+app.use(errorsHandler)
 app.use(notFound);
 
 
