@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const port = 3001;
 const postRouter = require('./routers/postsRouter'); //Importa un router per gestire le operazioni relative ai post
 
@@ -7,7 +8,7 @@ const postRouter = require('./routers/postsRouter'); //Importa un router per ges
 const notFound = require('./middlewares/notFound');
 const errorsHandler = require('./middlewares/errorsHandler');
 
-
+app.use(cors()); 
 
 app.use(express.static('public')); //cartella statica
 
